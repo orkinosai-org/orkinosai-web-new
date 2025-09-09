@@ -1,0 +1,134 @@
+@namespace Oqtane.Themes.OrkinosAITheme
+@inherits ContainerBase
+
+@if (ShowTitle || ShowControls)
+{
+    <div class="card mb-4 @_containerCssClass">
+        @if (ShowTitle)
+        {
+            <div class="card-header @_headerCssClass">
+                <h5 class="card-title mb-0">@Title</h5>
+                @if (ShowControls)
+                {
+                    <div class="float-end">
+                        <ActionMenu Actions="Actions" Context="Module" />
+                    </div>
+                }
+            </div>
+        }
+        else if (ShowControls)
+        {
+            <div class="card-header @_headerCssClass">
+                <div class="float-end">
+                    <ActionMenu Actions="Actions" Context="Module" />
+                </div>
+            </div>
+        }
+        
+        <div class="card-body @_bodyCssClass">
+            @if (!string.IsNullOrEmpty(Header))
+            {
+                <div class="container-header">
+                    @((MarkupString)Header)
+                </div>
+            }
+            @Content
+            @if (!string.IsNullOrEmpty(Footer))
+            {
+                <div class="container-footer mt-3">
+                    @((MarkupString)Footer)
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div class="container-no-title @_containerCssClass">
+        @if (!string.IsNullOrEmpty(Header))
+        {
+            <div class="container-header">
+                @((MarkupString)Header)
+            </div>
+        }
+        @Content
+        @if (!string.IsNullOrEmpty(Footer))
+        {
+            <div class="container-footer mt-3">
+                @((MarkupString)Footer)
+            </div>
+        }
+    </div>
+}
+
+@code {
+    public override string Name => "OrkinosAI Default Container";
+
+    private string _containerStyle = "default";
+    private string _containerCssClass = "";
+    private string _headerCssClass = "bg-primary text-white";
+    private string _bodyCssClass = "";
+
+    protected override void OnParametersSet()
+    {
+        try
+        {
+            var settings = SettingService.MergeSettings(PageState.Site.Settings, PageState.Page.Settings, PageState.Module.Settings);
+            _containerStyle = SettingService.GetSetting(settings, GetType().Namespace + ":ContainerStyle", "default");
+            
+            // Set CSS classes based on container style
+            switch (_containerStyle)
+            {
+                case "primary":
+                    _containerCssClass = "border-primary";
+                    _headerCssClass = "bg-primary text-white";
+                    _bodyCssClass = "";
+                    break;
+                case "secondary":
+                    _containerCssClass = "border-secondary";
+                    _headerCssClass = "bg-secondary text-white";
+                    _bodyCssClass = "";
+                    break;
+                case "success":
+                    _containerCssClass = "border-success";
+                    _headerCssClass = "bg-success text-white";
+                    _bodyCssClass = "";
+                    break;
+                case "info":
+                    _containerCssClass = "border-info";
+                    _headerCssClass = "bg-info text-white";
+                    _bodyCssClass = "";
+                    break;
+                case "warning":
+                    _containerCssClass = "border-warning";
+                    _headerCssClass = "bg-warning text-dark";
+                    _bodyCssClass = "";
+                    break;
+                case "danger":
+                    _containerCssClass = "border-danger";
+                    _headerCssClass = "bg-danger text-white";
+                    _bodyCssClass = "";
+                    break;
+                case "light":
+                    _containerCssClass = "border-light";
+                    _headerCssClass = "bg-light text-dark border-bottom";
+                    _bodyCssClass = "";
+                    break;
+                case "dark":
+                    _containerCssClass = "border-dark";
+                    _headerCssClass = "bg-dark text-white";
+                    _bodyCssClass = "";
+                    break;
+                default:
+                    _containerCssClass = "";
+                    _headerCssClass = "bg-primary text-white";
+                    _bodyCssClass = "";
+                    break;
+            }
+        }
+        catch
+        {
+            // error loading container settings - use defaults
+        }
+    }
+}

@@ -1,0 +1,99 @@
+@namespace Oqtane.Themes.OrkinosAITheme
+@inherits ModuleBase
+@inject ISettingService SettingService
+
+<div class="container">
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="login" HelpText="Specify if you want to display the Login link" ResourceKey="Login">Login: </Label>
+        <div class="col-sm-9">
+            <select id="login" class="form-select" @bind="_login">
+                <option value="True">@Localizer["Yes"]</option>
+                <option value="False">@Localizer["No"]</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="register" HelpText="Specify if you want to display the Register link" ResourceKey="Register">Register: </Label>
+        <div class="col-sm-9">
+            <select id="register" class="form-select" @bind="_register">
+                <option value="True">@Localizer["Yes"]</option>
+                <option value="False">@Localizer["No"]</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="search" HelpText="Specify if you want to display the Search box" ResourceKey="Search">Search: </Label>
+        <div class="col-sm-9">
+            <select id="search" class="form-select" @bind="_search">
+                <option value="True">@Localizer["Yes"]</option>
+                <option value="False">@Localizer["No"]</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="userprofile" HelpText="Specify if you want to display the User Profile" ResourceKey="UserProfile">User Profile: </Label>
+        <div class="col-sm-9">
+            <select id="userprofile" class="form-select" @bind="_userprofile">
+                <option value="True">@Localizer["Yes"]</option>
+                <option value="False">@Localizer["No"]</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="footerstyle" HelpText="Specify the footer style" ResourceKey="FooterStyle">Footer Style: </Label>
+        <div class="col-sm-9">
+            <select id="footerstyle" class="form-select" @bind="_footerstyle">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+@code {
+    public override string Name => "OrkinosAI Theme Settings";
+
+    private string _login = "True";
+    private string _register = "True";
+    private string _search = "True";
+    private string _userprofile = "True";
+    private string _footerstyle = "dark";
+
+    protected override void OnInitialized()
+    {
+        try
+        {
+            var settings = SettingService.MergeSettings(PageState.Site.Settings, PageState.Page.Settings);
+            _login = SettingService.GetSetting(settings, GetType().Namespace + ":Login", "True");
+            _register = SettingService.GetSetting(settings, GetType().Namespace + ":Register", "True");
+            _search = SettingService.GetSetting(settings, GetType().Namespace + ":ShowSearch", "True");
+            _userprofile = SettingService.GetSetting(settings, GetType().Namespace + ":ShowUserProfile", "True");
+            _footerstyle = SettingService.GetSetting(settings, GetType().Namespace + ":FooterStyle", "dark");
+        }
+        catch
+        {
+            // error loading theme settings
+        }
+    }
+
+    public override async Task<bool> UpdateSettings()
+    {
+        try
+        {
+            var settings = await SettingService.GetPageSettingsAsync(PageState.Page.PageId);
+            
+            settings = SettingService.SetSetting(settings, GetType().Namespace + ":Login", _login);
+            settings = SettingService.SetSetting(settings, GetType().Namespace + ":Register", _register);
+            settings = SettingService.SetSetting(settings, GetType().Namespace + ":ShowSearch", _search);
+            settings = SettingService.SetSetting(settings, GetType().Namespace + ":ShowUserProfile", _userprofile);
+            settings = SettingService.SetSetting(settings, GetType().Namespace + ":FooterStyle", _footerstyle);
+            
+            await SettingService.UpdatePageSettingsAsync(settings, PageState.Page.PageId);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+}

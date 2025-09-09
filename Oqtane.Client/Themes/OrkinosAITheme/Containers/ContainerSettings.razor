@@ -1,0 +1,56 @@
+@namespace Oqtane.Themes.OrkinosAITheme
+@inherits ModuleBase
+@inject ISettingService SettingService
+
+<div class="container">
+    <div class="row mb-3 align-items-center">
+        <Label Class="col-sm-3" For="containerstyle" HelpText="Specify the container style" ResourceKey="ContainerStyle">Container Style: </Label>
+        <div class="col-sm-9">
+            <select id="containerstyle" class="form-select" @bind="_containerstyle">
+                <option value="default">Default</option>
+                <option value="primary">Primary</option>
+                <option value="secondary">Secondary</option>
+                <option value="success">Success</option>
+                <option value="info">Info</option>
+                <option value="warning">Warning</option>
+                <option value="danger">Danger</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+@code {
+    public override string Name => "OrkinosAI Container Settings";
+
+    private string _containerstyle = "default";
+
+    protected override void OnInitialized()
+    {
+        try
+        {
+            var settings = SettingService.MergeSettings(PageState.Site.Settings, PageState.Page.Settings, PageState.Module.Settings);
+            _containerstyle = SettingService.GetSetting(settings, GetType().Namespace + ":ContainerStyle", "default");
+        }
+        catch
+        {
+            // error loading container settings
+        }
+    }
+
+    public override async Task<bool> UpdateSettings()
+    {
+        try
+        {
+            var settings = await SettingService.GetModuleSettingsAsync(PageState.Module.ModuleId);
+            settings = SettingService.SetSetting(settings, GetType().Namespace + ":ContainerStyle", _containerstyle);
+            await SettingService.UpdateModuleSettingsAsync(settings, PageState.Module.ModuleId);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+}

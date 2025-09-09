@@ -15,8 +15,8 @@ namespace Oqtane.Shared
         public const string DefaultDBName = "LocalDB";
         public const string DefaultDBType = "Oqtane.Database.SqlServer.SqlServerDatabase, Oqtane.Server";
 
-        public const string DefaultTheme = "Oqtane.Themes.OqtaneTheme.Default, Oqtane.Client";
-        public const string DefaultContainer = "Oqtane.Themes.OqtaneTheme.Container, Oqtane.Client";
+        public const string DefaultTheme = "Oqtane.Themes.OrkinosAITheme.Default, Oqtane.Client";
+        public const string DefaultContainer = "Oqtane.Themes.OrkinosAITheme.Container, Oqtane.Client";
         public const string DefaultAdminContainer = "Oqtane.Themes.AdminContainer, Oqtane.Client";
 
         public const string ActionToken = "{Action}";
@@ -35,7 +35,7 @@ namespace Oqtane.Shared
         public const string ErrorModule = "Oqtane.Modules.Admin.Error.{Action}, Oqtane.Client";
 
         public const string AdminSiteTemplate = "Oqtane.Infrastructure.SiteTemplates.AdminSiteTemplate, Oqtane.Server";
-        public const string DefaultSiteTemplate = "Oqtane.Infrastructure.SiteTemplates.DefaultSiteTemplate, Oqtane.Server";
+        public const string DefaultSiteTemplate = "Oqtane.Infrastructure.SiteTemplates.OrkinosAISiteTemplate, Oqtane.Server";
 
         public static readonly string[] DefaultHostModuleTypes = new[] { "Upgrade", "Themes", "SystemInfo", "Sql", "Sites", "ModuleDefinitions", "Logs", "Jobs", "ModuleCreator" };
 

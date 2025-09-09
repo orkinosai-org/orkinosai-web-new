@@ -18,7 +18,7 @@ namespace Oqtane.Themes.OrkinosAITheme
             {
                 // Use modern Bootstrap 5 with professional color scheme
                 new Stylesheet("https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css", "sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==", "anonymous"),
-                new Stylesheet("~/Theme.css"),
+                new Stylesheet("_content/Oqtane.Server/Themes/OrkinosAITheme/Theme.css"),
                 new Script(Constants.BootstrapScriptUrl, Constants.BootstrapScriptIntegrity, "anonymous")
             }
         };

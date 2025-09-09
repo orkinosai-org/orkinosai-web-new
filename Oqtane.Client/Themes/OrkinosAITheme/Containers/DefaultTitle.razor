@@ -1,44 +1,24 @@
 @namespace Oqtane.Themes.OrkinosAITheme
 @inherits ContainerBase
 
-@if (ShowTitle || ShowControls)
-{
-    <div class="card mb-4 @_containerCssClass">
-        @if (ShowTitle)
-        {
-            <div class="card-header @_headerCssClass">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="card-title mb-0"><ModuleTitle /></h5>
-                    @if (ShowControls)
-                    {
-                        <ModuleActions />
-                    }
-                </div>
-            </div>
-        }
-        else if (ShowControls)
-        {
-            <div class="card-header @_headerCssClass">
-                <div class="d-flex justify-content-end">
-                    <ModuleActions />
-                </div>
-            </div>
-        }
-        
-        <div class="card-body @_bodyCssClass">
-            <ModuleInstance />
+<div class="card mb-4 @_containerCssClass">
+    <div class="card-header @_headerCssClass">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0"><ModuleTitle /></h5>
+            @if (ShowControls)
+            {
+                <ModuleActions />
+            }
         </div>
     </div>
-}
-else
-{
-    <div class="container-no-title @_containerCssClass">
+    
+    <div class="card-body @_bodyCssClass">
         <ModuleInstance />
     </div>
-}
+</div>
 
 @code {
-    public override string Name => "OrkinosAI Default Container";
+    public override string Name => "OrkinosAI Default Title Container";
 
     private string _containerStyle = "default";
     private string _containerCssClass = "";

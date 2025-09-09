@@ -1,0 +1,50 @@
+@namespace Oqtane.Themes.OrkinosAITheme
+@inherits ContainerBase
+
+<div class="container-no-title @_containerCssClass">
+    @if (ShowControls)
+    {
+        <div class="module-controls mb-2 text-end">
+            <ModuleActions />
+        </div>
+    }
+    
+    <ModuleInstance />
+</div>
+
+@code {
+    public override string Name => "OrkinosAI Default No Title Container";
+
+    private string _containerStyle = "default";
+    private string _containerCssClass = "";
+
+    protected override void OnParametersSet()
+    {
+        try
+        {
+            var settings = SettingService.MergeSettings(PageState.Site.Settings, PageState.Page.Settings, PageState.Module.Settings);
+            _containerStyle = SettingService.GetSetting(settings, GetType().Namespace + ":ContainerStyle", "default");
+            
+            // Set CSS classes based on container style
+            switch (_containerStyle)
+            {
+                case "card":
+                    _containerCssClass = "card card-body";
+                    break;
+                case "border":
+                    _containerCssClass = "border rounded p-3";
+                    break;
+                case "shadow":
+                    _containerCssClass = "shadow rounded p-3";
+                    break;
+                default:
+                    _containerCssClass = "";
+                    break;
+            }
+        }
+        catch
+        {
+            // error loading container settings - use defaults
+        }
+    }
+}

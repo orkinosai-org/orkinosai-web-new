@@ -16,7 +16,7 @@ namespace Oqtane.Shared
         public const string DefaultDBType = "Oqtane.Database.SqlServer.SqlServerDatabase, Oqtane.Server";
 
         public const string DefaultTheme = "Oqtane.Themes.OrkinosAITheme.Default, Oqtane.Client";
-        public const string DefaultContainer = "Oqtane.Themes.OrkinosAITheme.Container, Oqtane.Client";
+        public const string DefaultContainer = "Oqtane.Themes.OrkinosAITheme.DefaultTitle, Oqtane.Client";
         public const string DefaultAdminContainer = "Oqtane.Themes.AdminContainer, Oqtane.Client";
 
         public const string ActionToken = "{Action}";

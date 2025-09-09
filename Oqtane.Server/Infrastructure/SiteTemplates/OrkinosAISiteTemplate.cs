@@ -358,6 +358,100 @@ namespace Oqtane.Infrastructure.SiteTemplates
                 _siteRepository.UpdateSite(site);
             }
 
+            // Add footer content to the home page
+            if (_pageTemplates.Count > 0)
+            {
+                _pageTemplates[0].PageTemplateModules.Add(new PageTemplateModule
+                {
+                    ModuleDefinitionName = "Oqtane.Modules.HtmlText, Oqtane.Client",
+                    Title = "Company Information",
+                    Pane = "Footer Left",
+                    PermissionList = new List<Permission> {
+                        new Permission(PermissionNames.View, RoleNames.Everyone, true),
+                        new Permission(PermissionNames.View, RoleNames.Admin, true),
+                        new Permission(PermissionNames.Edit, RoleNames.Admin, true)
+                    },
+                    Content = "<h5 class=\"text-white mb-3\">OrkinosAI</h5>" +
+                    "<p>Leading the AI revolution with innovative solutions that transform businesses and drive sustainable growth.</p>" +
+                    "<div class=\"d-flex gap-2 mt-3\">" +
+                    "<a href=\"#\" class=\"text-decoration-none\"><i class=\"oi oi-social-twitter\"></i></a>" +
+                    "<a href=\"#\" class=\"text-decoration-none\"><i class=\"oi oi-social-linkedin\"></i></a>" +
+                    "<a href=\"#\" class=\"text-decoration-none\"><i class=\"oi oi-social-github\"></i></a>" +
+                    "</div>"
+                });
+
+                _pageTemplates[0].PageTemplateModules.Add(new PageTemplateModule
+                {
+                    ModuleDefinitionName = "Oqtane.Modules.HtmlText, Oqtane.Client",
+                    Title = "Quick Links",
+                    Pane = "Footer Center Left",
+                    PermissionList = new List<Permission> {
+                        new Permission(PermissionNames.View, RoleNames.Everyone, true),
+                        new Permission(PermissionNames.View, RoleNames.Admin, true),
+                        new Permission(PermissionNames.Edit, RoleNames.Admin, true)
+                    },
+                    Content = "<h5 class=\"text-white mb-3\">Quick Links</h5>" +
+                    "<ul class=\"list-unstyled\">" +
+                    "<li><a href=\"/about\">About Us</a></li>" +
+                    "<li><a href=\"/services\">Services</a></li>" +
+                    "<li><a href=\"/products\">Products</a></li>" +
+                    "<li><a href=\"/founder\">Leadership</a></li>" +
+                    "</ul>"
+                });
+
+                _pageTemplates[0].PageTemplateModules.Add(new PageTemplateModule
+                {
+                    ModuleDefinitionName = "Oqtane.Modules.HtmlText, Oqtane.Client",
+                    Title = "Services",
+                    Pane = "Footer Center Right",
+                    PermissionList = new List<Permission> {
+                        new Permission(PermissionNames.View, RoleNames.Everyone, true),
+                        new Permission(PermissionNames.View, RoleNames.Admin, true),
+                        new Permission(PermissionNames.Edit, RoleNames.Admin, true)
+                    },
+                    Content = "<h5 class=\"text-white mb-3\">Services</h5>" +
+                    "<ul class=\"list-unstyled\">" +
+                    "<li><a href=\"/services\">AI Consulting</a></li>" +
+                    "<li><a href=\"/services\">Custom Development</a></li>" +
+                    "<li><a href=\"/services\">AI Integration</a></li>" +
+                    "<li><a href=\"/services\">Training & Support</a></li>" +
+                    "</ul>"
+                });
+
+                _pageTemplates[0].PageTemplateModules.Add(new PageTemplateModule
+                {
+                    ModuleDefinitionName = "Oqtane.Modules.HtmlText, Oqtane.Client",
+                    Title = "Contact Information",
+                    Pane = "Footer Right",
+                    PermissionList = new List<Permission> {
+                        new Permission(PermissionNames.View, RoleNames.Everyone, true),
+                        new Permission(PermissionNames.View, RoleNames.Admin, true),
+                        new Permission(PermissionNames.Edit, RoleNames.Admin, true)
+                    },
+                    Content = "<h5 class=\"text-white mb-3\">Contact Info</h5>" +
+                    "<div class=\"mb-2\"><i class=\"oi oi-map-marker me-2\"></i>123 AI Innovation Drive<br><span class=\"ms-4\">Silicon Valley, CA 94043</span></div>" +
+                    "<div class=\"mb-2\"><i class=\"oi oi-phone me-2\"></i>+1 (555) 123-4567</div>" +
+                    "<div class=\"mb-2\"><i class=\"oi oi-envelope-closed me-2\"></i>hello@orkinosai.com</div>"
+                });
+
+                _pageTemplates[0].PageTemplateModules.Add(new PageTemplateModule
+                {
+                    ModuleDefinitionName = "Oqtane.Modules.HtmlText, Oqtane.Client",
+                    Title = "Copyright",
+                    Pane = "Footer Bottom",
+                    PermissionList = new List<Permission> {
+                        new Permission(PermissionNames.View, RoleNames.Everyone, true),
+                        new Permission(PermissionNames.View, RoleNames.Admin, true),
+                        new Permission(PermissionNames.Edit, RoleNames.Admin, true)
+                    },
+                    Content = "<div class=\"text-center pt-4 border-top border-secondary\">" +
+                    "<p class=\"mb-0\">&copy; 2024 OrkinosAI. All rights reserved. | " +
+                    "<a href=\"#\" class=\"text-decoration-none\">Privacy Policy</a> | " +
+                    "<a href=\"#\" class=\"text-decoration-none\">Terms of Service</a></p>" +
+                    "</div>"
+                });
+            }
+
             return _pageTemplates;
         }
     }

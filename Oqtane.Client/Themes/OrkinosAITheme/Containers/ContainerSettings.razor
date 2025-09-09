@@ -1,5 +1,6 @@
 @namespace Oqtane.Themes.OrkinosAITheme
 @inherits ModuleBase
+@implements Oqtane.Interfaces.ISettingsControl
 @inject ISettingService SettingService
 
 <div class="container">
@@ -22,7 +23,7 @@
 </div>
 
 @code {
-    public override string Name => "OrkinosAI Container Settings";
+    public string Name => "OrkinosAI Container Settings";
 
     private string _containerstyle = "default";
 
@@ -30,7 +31,7 @@
     {
         try
         {
-            var settings = SettingService.MergeSettings(PageState.Site.Settings, PageState.Page.Settings, PageState.Module.Settings);
+            var settings = SettingService.MergeSettings(PageState.Site.Settings, ModuleState.Settings);
             _containerstyle = SettingService.GetSetting(settings, GetType().Namespace + ":ContainerStyle", "default");
         }
         catch
@@ -39,18 +40,17 @@
         }
     }
 
-    public override async Task<bool> UpdateSettings()
+    public async Task UpdateSettings()
     {
         try
         {
-            var settings = await SettingService.GetModuleSettingsAsync(PageState.Module.ModuleId);
+            var settings = await SettingService.GetModuleSettingsAsync(ModuleState.ModuleId);
             settings = SettingService.SetSetting(settings, GetType().Namespace + ":ContainerStyle", _containerstyle);
-            await SettingService.UpdateModuleSettingsAsync(settings, PageState.Module.ModuleId);
-            return true;
+            await SettingService.UpdateModuleSettingsAsync(settings, ModuleState.ModuleId);
         }
         catch
         {
-            return false;
+            // error updating container settings
         }
     }
 }

@@ -1,63 +1,32 @@
 @namespace Oqtane.Themes.OrkinosAITheme
 @inherits ContainerBase
+@inject ISettingService SettingService
 
-@if (ShowTitle || ShowControls)
+@if (ModuleState.Title != "-")
 {
     <div class="card mb-4 @_containerCssClass">
-        @if (ShowTitle)
-        {
-            <div class="card-header @_headerCssClass">
-                <h5 class="card-title mb-0">@Title</h5>
-                @if (ShowControls)
-                {
-                    <div class="float-end">
-                        <ActionMenu Actions="Actions" Context="Module" />
-                    </div>
-                }
+        <div class="card-header @_headerCssClass">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0"><ModuleTitle /></h5>
+                <ModuleActions />
             </div>
-        }
-        else if (ShowControls)
-        {
-            <div class="card-header @_headerCssClass">
-                <div class="float-end">
-                    <ActionMenu Actions="Actions" Context="Module" />
-                </div>
-            </div>
-        }
-        
+        </div>
         <div class="card-body @_bodyCssClass">
-            @if (!string.IsNullOrEmpty(Header))
-            {
-                <div class="container-header">
-                    @((MarkupString)Header)
-                </div>
-            }
-            @Content
-            @if (!string.IsNullOrEmpty(Footer))
-            {
-                <div class="container-footer mt-3">
-                    @((MarkupString)Footer)
-                </div>
-            }
+            <ModuleInstance />
         </div>
     </div>
 }
 else
 {
-    <div class="container-no-title @_containerCssClass">
-        @if (!string.IsNullOrEmpty(Header))
-        {
-            <div class="container-header">
-                @((MarkupString)Header)
+    <div class="card mb-4 @_containerCssClass">
+        <div class="card-header @_headerCssClass">
+            <div class="float-end">
+                <ModuleActions />
             </div>
-        }
-        @Content
-        @if (!string.IsNullOrEmpty(Footer))
-        {
-            <div class="container-footer mt-3">
-                @((MarkupString)Footer)
-            </div>
-        }
+        </div>
+        <div class="card-body @_bodyCssClass">
+            <ModuleInstance />
+        </div>
     </div>
 }
 
@@ -73,7 +42,7 @@ else
     {
         try
         {
-            var settings = SettingService.MergeSettings(PageState.Site.Settings, PageState.Page.Settings, PageState.Module.Settings);
+            var settings = SettingService.MergeSettings(PageState.Site.Settings, ModuleState.Settings);
             _containerStyle = SettingService.GetSetting(settings, GetType().Namespace + ":ContainerStyle", "default");
             
             // Set CSS classes based on container style

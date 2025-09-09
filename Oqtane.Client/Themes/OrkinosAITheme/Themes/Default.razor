@@ -1,0 +1,185 @@
+@namespace Oqtane.Themes.OrkinosAITheme
+@inherits ThemeBase
+@inject ISettingService SettingService
+
+<main role="main">
+    <!-- Header Navigation -->
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+        <div class="container">
+            <Logo UseSiteNameAsFallback="true" />
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <Menu Orientation="Horizontal" CssClass="navbar-nav me-auto" />
+                <div class="navbar-nav ms-auto">
+                    @if (_showSearch)
+                    {
+                        <Search CssClass="nav-item" />
+                    }
+                    @if (_showUserProfile)
+                    {
+                        <UserProfile ShowRegister="@_register" />
+                    }
+                    @if (_showLogin)
+                    {
+                        <Login ShowLogin="@_login" />
+                    }
+                    <ControlPanel LanguageDropdownAlignment="end" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="content">
+        <!-- Hero Section -->
+        <Pane Name="Hero" />
+        
+        <!-- Main Content Container -->
+        <div class="container py-4">
+            <!-- Primary Content -->
+            <div class="row">
+                <div class="col-12">
+                    <Pane Name="@PaneNames.Default" />
+                </div>
+            </div>
+
+            <!-- Two Column Layout -->
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <Pane Name="Left 50%" />
+                </div>
+                <div class="col-md-6">
+                    <Pane Name="Right 50%" />
+                </div>
+            </div>
+
+            <!-- Three Column Layout -->
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <Pane Name="Left 33%" />
+                </div>
+                <div class="col-md-4">
+                    <Pane Name="Center 33%" />
+                </div>
+                <div class="col-md-4">
+                    <Pane Name="Right 33%" />
+                </div>
+            </div>
+
+            <!-- Four Column Layout -->
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <Pane Name="Left 25%" />
+                </div>
+                <div class="col-md-3">
+                    <Pane Name="Left Center 25%" />
+                </div>
+                <div class="col-md-3">
+                    <Pane Name="Right Center 25%" />
+                </div>
+                <div class="col-md-3">
+                    <Pane Name="Right 25%" />
+                </div>
+            </div>
+
+            <!-- Sidebar Layouts -->
+            <div class="row g-4">
+                <div class="col-md-8">
+                    <Pane Name="Main Content 66%" />
+                </div>
+                <div class="col-md-4">
+                    <Pane Name="Sidebar 33%" />
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <Pane Name="Left Sidebar 33%" />
+                </div>
+                <div class="col-md-8">
+                    <Pane Name="Main Content Right 66%" />
+                </div>
+            </div>
+
+            <!-- Full Width Bottom -->
+            <div class="row">
+                <div class="col-12">
+                    <Pane Name="Bottom 100%" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action Section -->
+        <Pane Name="Call to Action" />
+        
+        <!-- Features Section -->
+        <Pane Name="Features" />
+        
+        <!-- Testimonials Section -->
+        <Pane Name="Testimonials" />
+    </div>
+
+    <!-- Footer -->
+    <footer class="@(_footerCssClass)">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <Pane Name="Footer Left" />
+                </div>
+                <div class="col-md-3">
+                    <Pane Name="Footer Center Left" />
+                </div>
+                <div class="col-md-3">
+                    <Pane Name="Footer Center Right" />
+                </div>
+                <div class="col-md-3">
+                    <Pane Name="Footer Right" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <Pane Name="Footer Bottom" />
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <CookieConsent />
+</main>
+
+@code {
+    public override string Name => "OrkinosAI Professional Theme";
+
+    public override string Panes => PaneNames.Default + ",Hero,Left 50%,Right 50%,Left 33%,Center 33%,Right 33%,Left 25%,Left Center 25%,Right Center 25%,Right 25%,Main Content 66%,Sidebar 33%,Left Sidebar 33%,Main Content Right 66%,Bottom 100%,Call to Action,Features,Testimonials,Footer Left,Footer Center Left,Footer Center Right,Footer Right,Footer Bottom";
+
+    private bool _login = true;
+    private bool _register = true;
+    private bool _showSearch = true;
+    private bool _showUserProfile = true;
+    private bool _showLogin = true;
+    private string _footerStyle = "dark";
+    private string _footerCssClass = "bg-dark text-light py-5 mt-5";
+
+    protected override void OnParametersSet()
+    {
+        try
+        {
+            var settings = SettingService.MergeSettings(PageState.Site.Settings, PageState.Page.Settings);
+            _login = bool.Parse(SettingService.GetSetting(settings, GetType().Namespace + ":Login", "true"));
+            _register = bool.Parse(SettingService.GetSetting(settings, GetType().Namespace + ":Register", "true"));
+            _showSearch = bool.Parse(SettingService.GetSetting(settings, GetType().Namespace + ":ShowSearch", "true"));
+            _showUserProfile = bool.Parse(SettingService.GetSetting(settings, GetType().Namespace + ":ShowUserProfile", "true"));
+            _showLogin = bool.Parse(SettingService.GetSetting(settings, GetType().Namespace + ":ShowLogin", "true"));
+            _footerStyle = SettingService.GetSetting(settings, GetType().Namespace + ":FooterStyle", "dark");
+            
+            // Set footer CSS based on style setting
+            _footerCssClass = _footerStyle == "light" ? "bg-light text-dark py-5 mt-5 border-top" : "bg-dark text-light py-5 mt-5";
+        }
+        catch
+        {
+            // error loading theme settings - use defaults
+        }
+    }
+}

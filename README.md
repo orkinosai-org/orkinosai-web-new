@@ -1,18 +1,20 @@
-# Oqtane Framework
+# OrkinosAI Web Platform - Powered by Oqtane Framework 6.2
 
-![Oqtane](https://github.com/oqtane/framework/blob/master/oqtane.png?raw=true "Oqtane")
+![OrkinosAI Logo](Oqtane.Server/wwwroot/images/orkinosai-logo.png)
 
-Oqtane is an open source Content Management System (CMS) and Application Framework that provides advanced functionality for developing web, mobile, and desktop applications on modern .NET. 
+This is the OrkinosAI web platform built on **Oqtane Framework 6.2**, an open source Content Management System (CMS) and Application Framework that provides advanced functionality for developing web, mobile, and desktop applications on modern .NET.
 
-Oqtane allows you to "Build Applications, Not Infrastructure" which means that you can focus your efforts on solving your unique business challenges rather than wasting time and effort on building general infrastructure. 
+## OrkinosAI Features
 
-Oqtane is "Rocket Fuel for Blazor" as it provides powerful capabilities to accelerate your Blazor development experience, providing scalable services and a composable UI which can be hosted on Static Blazor, Blazor Server, Blazor WebAssembly, or Blazor Hybrid (via .NET MAUI).
+- **Custom AI-themed design** with professional branding
+- **Comprehensive site template** including Home, About, Services, Products, Founder, and Contact pages
+- **Modern responsive theme** optimized for AI company presentation
+- **Professional gradient styling** and interactive components
+- **Full Oqtane CMS capabilities** for content management
 
-Oqtane is being developed based on some fundamental principles which are outlined in the [Oqtane Philosophy](https://www.oqtane.org/blog/!/20/oqtane-philosophy). This project is an official member of the .NET Foundation and is governed by the **[.NET Foundation Contributor Covenant Code of Conduct](https://dotnetfoundation.org/code-of-conduct)**
+## Current Version
 
-# Latest Release
-
-[6.1.5](https://github.com/oqtane/oqtane.framework/releases/tag/v6.1.5) was released on August 17, 2025 and is a maintenance release including 46 pull requests by 3 different contributors, pushing the total number of project commits all-time to almost 6900. The Oqtane framework continues to evolve at a rapid pace to meet the needs of .NET developers.
+**Oqtane 6.2.0** - Released September 9, 2025. This version targets **.NET 9.0** and includes the latest features and improvements for modern web development.
 
 # Try It Now!
 
@@ -24,15 +26,15 @@ A free ASP.NET hosting account. No hidden fees. No credit card required.
 
 # Getting Started (Version 6)
 
-**Installing using source code from the Dev/Master branch:**
+**Prerequisites:**
 
-- Install **[.NET 9.0.7 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)**.
+- Install **[.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)** (version 9.0.7 or higher).
 
-- Install the latest edition (v17.12 or higher) of [Visual Studio 2022](https://visualstudio.microsoft.com/downloads) with the **ASP.NET and web development** workload enabled. Oqtane works with ALL editions of Visual Studio from Community to Enterprise. If you wish to use LocalDB for development ( not a requirement as Oqtane supports SQLite, mySQL, and PostgreSQL ) you must also install the **Data storage and processing**.  
+**Installing and Running OrkinosAI:**
 
-- Clone (or download) the Oqtane Master or Dev branch source code to your local system.
+- Clone this repository to your local system.
 
-- Open the **Oqtane.sln** solution file.
+- Open the **Oqtane.sln** solution file in Visual Studio 2022 (v17.12 or higher) with the **ASP.NET and web development** workload enabled.
 
 - **Important:** Rebuild the entire solution before running it (ie. Build / Rebuild Solution).
   
@@ -40,7 +42,9 @@ A free ASP.NET hosting account. No hidden fees. No credit card required.
 
 - Run the application... an Installation Wizard screen will be displayed which will allow you to configure your preferred database and create a host user account.
 
-**Developing a custom module:**  
+- **Select the "OrkinosAI Business Template"** during site creation to get the complete AI-themed website with all pages and branding.
+
+**For Development:**  
 
 - follow the instructions for installing using source code outlined above
 

@@ -7,23 +7,35 @@
     <header class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
         <div class="container">
             <Logo UseSiteNameAsFallback="true" />
-            <!-- Main Navigation Menu -->
-            <Menu Orientation="Horizontal" />
-            <!-- Right side navigation items -->
-            <div class="navbar-nav ms-auto">
-                @if (_showSearch)
-                {
-                    <Search CssClass="nav-item" />
-                }
-                @if (_showUserProfile)
-                {
-                    <UserProfile ShowRegister="@_register" />
-                }
-                @if (_showLogin)
-                {
-                    <Login ShowLogin="@_login" />
-                }
-                <ControlPanel LanguageDropdownAlignment="end" />
+            
+            <!-- Navbar Toggler for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Collapsible navbar content -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Main Navigation Menu -->
+                <div class="app-menu">
+                    <Menu Orientation="Horizontal" />
+                </div>
+                
+                <!-- Right side navigation items -->
+                <div class="navbar-nav ms-auto">
+                    @if (_showSearch)
+                    {
+                        <Search CssClass="nav-item" />
+                    }
+                    @if (_showUserProfile)
+                    {
+                        <UserProfile ShowRegister="@_register" />
+                    }
+                    @if (_showLogin)
+                    {
+                        <Login ShowLogin="@_login" />
+                    }
+                    <ControlPanel LanguageDropdownAlignment="end" />
+                </div>
             </div>
         </div>
     </header>

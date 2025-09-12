@@ -49,11 +49,47 @@ body {
     background-color: rgba(33, 37, 41, 0.95) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+    min-height: 6rem;
 }
 
 .navbar-brand {
     font-weight: 700;
     font-size: 1.5rem;
+}
+
+/* Navbar Layout Fix - Prevent overlap between menu and control panel */
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.navbar-brand {
+    flex-shrink: 0;
+    order: 1;
+}
+
+.navbar-toggler {
+    order: 3;
+    border: none;
+    color: white;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+.navbar-collapse {
+    order: 4;
+    flex-basis: 100%;
+}
+
+/* Control panel should stay on the right */
+.navbar-nav.ms-auto {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 /* Oqtane Menu Integration */
@@ -137,15 +173,79 @@ body {
     color: var(--orkinosai-primary) !important;
 }
 
-/* Responsive Menu */
+/* Desktop Layout - Ensure proper positioning for larger screens */
+@media (min-width: 992px) {
+    .navbar .container {
+        flex-wrap: nowrap;
+    }
+    
+    .navbar-collapse {
+        order: 2;
+        flex-basis: auto;
+        display: flex !important;
+    }
+    
+    .app-menu {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        max-width: calc(100% - 300px); /* Reserve space for brand and control panel */
+    }
+    
+    .app-menu .navbar-nav {
+        margin: 0 auto;
+        flex-direction: row;
+    }
+    
+    .app-menu .navbar-nav .nav-item {
+        margin: 0 0.5rem;
+    }
+    
+    /* Ensure control panel stays on the right */
+    .navbar-nav.ms-auto {
+        margin-left: auto !important;
+        flex-direction: row;
+    }
+    
+    .navbar-toggler {
+        display: none;
+    }
+}
+
+/* Tablet and Mobile Layout */
 @media (max-width: 991.98px) {
+    .navbar-collapse {
+        margin-top: 1rem;
+    }
+    
+    .app-menu {
+        width: 100%;
+        order: 1;
+    }
+    
     .app-menu .navbar-nav {
         text-align: center;
         padding-top: 1rem;
+        flex-direction: column;
     }
     
     .app-menu .navbar-nav .nav-item {
         margin: 0.25rem 0;
+        width: 100%;
+    }
+    
+    /* Stack control panel items */
+    .navbar-nav.ms-auto {
+        margin-left: 0 !important;
+        margin-top: 1rem;
+        flex-direction: column;
+        align-items: center;
+        order: 2;
+        width: 100%;
+    }
+    
+    .navbar-nav.ms-auto .nav-item {
+        margin: 0.5rem 0;
     }
 }
 
@@ -430,7 +530,7 @@ footer a:hover {
     background-color: rgba(0, 123, 255, 0.05);
 }
 
-/* Responsive Design */
+/* Mobile-specific layout adjustments */
 @media (max-width: 768px) {
     .hero-section h1 {
         font-size: 2.5rem;
@@ -446,6 +546,29 @@ footer a:hover {
     
     .feature-card {
         margin-bottom: 2rem;
+    }
+    
+    /* Adjust navbar padding for mobile */
+    body {
+        padding-top: 5rem;
+    }
+    
+    .navbar {
+        min-height: 4rem;
+    }
+    
+    /* Stack navbar items vertically */
+    .navbar-collapse {
+        text-align: center;
+    }
+    
+    .navbar-nav {
+        flex-direction: column;
+    }
+    
+    .app-menu .navbar-nav .nav-item {
+        margin: 0.5rem 0;
+        width: 100%;
     }
 }
 

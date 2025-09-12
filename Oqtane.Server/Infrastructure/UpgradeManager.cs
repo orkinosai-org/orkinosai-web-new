@@ -596,6 +596,9 @@ namespace Oqtane.Infrastructure
             };
 
             AddPagesToSites(scope, tenant, pageTemplates);
+            
+            // Restore OrkinosAI branding for sites that should use it
+            RestoreOrkinosAIBranding(scope, tenant);
         }
 
         private void AddPagesToSites(IServiceScope scope, Tenant tenant, List<PageTemplate> pageTemplates)
@@ -606,6 +609,31 @@ namespace Oqtane.Infrastructure
             {
                 tenants.SetAlias(tenant.TenantId, site.SiteId);
                 sites.CreatePages(site, pageTemplates, null);
+            }
+        }
+
+        private void RestoreOrkinosAIBranding(IServiceScope scope, Tenant tenant)
+        {
+            try
+            {
+                var tenants = scope.ServiceProvider.GetRequiredService<ITenantManager>();
+                var sites = scope.ServiceProvider.GetRequiredService<ISiteRepository>();
+                var brandingManager = scope.ServiceProvider.GetRequiredService<IOrkinosAIBrandingManager>();
+
+                foreach (var site in sites.GetSites().ToList())
+                {
+                    tenants.SetAlias(tenant.TenantId, site.SiteId);
+
+                    // Check if this site should use OrkinosAI branding and apply it if needed
+                    if (brandingManager.IsOrkinosAISite(site.SiteId))
+                    {
+                        brandingManager.ApplyOrkinosAIBranding(site.SiteId);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _filelogger.LogError(Utilities.LogMessage(this, $"Oqtane Error: Error In OrkinosAI Branding Restoration - {ex}"));
             }
         }
 

@@ -289,6 +289,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IUserManager, UserManager>();
             services.AddTransient<ILocalizationManager, LocalizationManager>();
             services.AddTransient<ITokenReplace, TokenReplace>();
+            services.AddTransient<IOrkinosAIBrandingManager, OrkinosAIBrandingManager>();
 
             // obsolete
             services.AddTransient<ITenantResolver, TenantResolver>(); // replaced by ITenantManager

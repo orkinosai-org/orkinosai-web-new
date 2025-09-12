@@ -1,0 +1,443 @@
+/* OrkinosAI Theme - Professional AI Company Design */
+
+:root {
+    /* Primary AI Brand Colors */
+    --orkinosai-primary: #007BFF;
+    --orkinosai-secondary: #6C757D;
+    --orkinosai-accent: #28A745;
+    --orkinosai-dark: #212529;
+    --orkinosai-light: #F8F9FA;
+    
+    /* AI-themed gradient */
+    --orkinosai-gradient: linear-gradient(135deg, #007BFF 0%, #6610f2 100%);
+    --orkinosai-gradient-subtle: linear-gradient(135deg, rgba(0, 123, 255, 0.1) 0%, rgba(102, 16, 242, 0.1) 100%);
+    
+    /* Professional shadows */
+    --orkinosai-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --orkinosai-shadow-hover: 0 8px 25px rgba(0, 123, 255, 0.2);
+    
+    /* Typography */
+    --orkinosai-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body and Layout */
+body {
+    padding-top: 6rem;
+    font-family: var(--orkinosai-font-family);
+    line-height: 1.6;
+    color: var(--orkinosai-dark);
+}
+
+/* Typography Enhancements */
+.gradient-text {
+    background: var(--orkinosai-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+/* Navigation Header */
+.navbar {
+    backdrop-filter: blur(10px);
+    background-color: rgba(33, 37, 41, 0.95) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--orkinosai-primary) !important;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: var(--orkinosai-gradient);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Logo Styling */
+.app-logo .img-fluid {
+    max-height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.app-logo:hover .img-fluid {
+    transform: scale(1.05);
+}
+
+/* Hero Section */
+.hero-section {
+    background: var(--orkinosai-gradient);
+    color: white;
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/><circle cx="20" cy="20" r="1" fill="white" opacity="0.05"/><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.08"/></svg>');
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section .lead {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Feature Cards */
+.feature-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: var(--orkinosai-shadow);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 123, 255, 0.1);
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--orkinosai-shadow-hover);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--orkinosai-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
+    font-size: 2rem;
+}
+
+.feature-card h4 {
+    color: var(--orkinosai-dark);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Section Styling */
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background: var(--orkinosai-gradient-subtle) !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--orkinosai-gradient);
+    border: none;
+    padding: 12px 30px;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--orkinosai-shadow-hover);
+    background: linear-gradient(135deg, #0056b3 0%, #5a0bb3 100%);
+}
+
+.btn-outline-light {
+    border: 2px solid white;
+    color: white;
+    padding: 10px 30px;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background: white;
+    color: var(--orkinosai-primary);
+    transform: translateY(-2px);
+}
+
+.btn-lg {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: var(--orkinosai-shadow);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--orkinosai-shadow-hover);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.shadow-lg-hover {
+    transition: all 0.3s ease;
+}
+
+.shadow-lg-hover:hover {
+    box-shadow: 0 1rem 3rem rgba(0, 123, 255, 0.175) !important;
+}
+
+/* Call to Action Section */
+.cta-section {
+    background: var(--orkinosai-gradient);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="0,100 20,80 40,90 60,70 80,85 100,65 100,100" fill="white" opacity="0.05"/></svg>');
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    background: var(--orkinosai-dark) !important;
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--orkinosai-gradient);
+}
+
+footer h5 {
+    color: var(--orkinosai-primary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--orkinosai-primary);
+    text-decoration: none;
+}
+
+/* Content Area */
+.content {
+    min-height: calc(100vh - 200px);
+}
+
+/* Forms */
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 1px solid rgba(0, 123, 255, 0.2);
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--orkinosai-primary);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--orkinosai-dark);
+    margin-bottom: 0.5rem;
+}
+
+/* Tables */
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--orkinosai-shadow);
+}
+
+.table thead th {
+    background: var(--orkinosai-gradient);
+    color: white;
+    border: none;
+    font-weight: 600;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section .lead {
+        font-size: 1.1rem;
+    }
+    
+    .section-padding {
+        padding: 60px 0;
+    }
+    
+    .feature-card {
+        margin-bottom: 2rem;
+    }
+}
+
+/* AI-themed Animations */
+.ai-pulse {
+    animation: aiPulse 2s ease-in-out infinite;
+}
+
+@keyframes aiPulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 123, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+}
+
+/* Utility Classes */
+.text-primary {
+    color: var(--orkinosai-primary) !important;
+}
+
+.bg-primary {
+    background: var(--orkinosai-gradient) !important;
+}
+
+.border-primary {
+    border-color: var(--orkinosai-primary) !important;
+}
+
+/* Loading and Interactive States */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    100% { left: 100%; }
+}
+
+/* Print Styles */
+@media print {
+    .navbar, footer, .btn, .controls {
+        display: none !important;
+    }
+    
+    body {
+        padding-top: 0;
+    }
+    
+    .content {
+        min-height: auto;
+    }
+}

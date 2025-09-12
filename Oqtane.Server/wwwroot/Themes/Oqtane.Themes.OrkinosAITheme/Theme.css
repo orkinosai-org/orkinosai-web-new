@@ -107,6 +107,16 @@ body {
     margin: 0 0.5rem;
 }
 
+/* Hide the Menu component's own toggler since we handle it at theme level */
+.app-menu .app-menu-toggler {
+    display: none !important;
+}
+
+/* Ensure Menu component's collapse behavior works within our structure */
+.app-menu .navbar-collapse {
+    display: block !important;
+}
+
 /* Navigation Links Styling */
 .navbar-nav .nav-link {
     font-weight: 500;

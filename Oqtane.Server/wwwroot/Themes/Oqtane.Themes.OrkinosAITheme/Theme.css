@@ -56,13 +56,35 @@ body {
     font-size: 1.5rem;
 }
 
+/* Oqtane Menu Integration */
+.app-menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.app-menu .navbar-nav {
+    margin: 0 auto;
+}
+
+.app-menu .navbar-nav .nav-item {
+    margin: 0 0.5rem;
+}
+
+/* Navigation Links Styling */
 .navbar-nav .nav-link {
     font-weight: 500;
     transition: color 0.3s ease;
     position: relative;
+    padding: 0.75rem 1rem;
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .navbar-nav .nav-link:hover {
+    color: var(--orkinosai-primary) !important;
+}
+
+.navbar-nav .nav-link.active {
     color: var(--orkinosai-primary) !important;
 }
 
@@ -78,8 +100,53 @@ body {
     transform: translateX(-50%);
 }
 
-.navbar-nav .nav-link:hover::after {
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
     width: 100%;
+}
+
+/* Mobile Menu Toggler */
+.app-menu-toggler {
+    order: 2;
+}
+
+.app-menu-toggler .navbar-toggler {
+    border: none;
+    color: white;
+}
+
+.app-menu-toggler .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+/* Dropdown Menu Styling */
+.navbar-nav .dropdown-menu {
+    background-color: rgba(33, 37, 41, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-nav .dropdown-menu .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-nav .dropdown-menu .nav-link:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: var(--orkinosai-primary) !important;
+}
+
+/* Responsive Menu */
+@media (max-width: 991.98px) {
+    .app-menu .navbar-nav {
+        text-align: center;
+        padding-top: 1rem;
+    }
+    
+    .app-menu .navbar-nav .nav-item {
+        margin: 0.25rem 0;
+    }
 }
 
 /* Logo Styling */

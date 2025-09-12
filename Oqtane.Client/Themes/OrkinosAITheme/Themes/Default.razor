@@ -33,6 +33,23 @@
 
     <!-- Main Content Area -->
     <div class="content">
+        <!-- OrkinosAI Favicon Override -->
+        <script>
+            // Add OrkinosAI favicon links to override default
+            if (!document.querySelector('link[rel="icon"][href*="orkinosai"]')) {
+                var link = document.createElement('link');
+                link.rel = 'icon';
+                link.type = 'image/png';
+                link.href = '/images/orkinosai-logo.png';
+                document.head.appendChild(link);
+                
+                var appleTouchIcon = document.createElement('link');
+                appleTouchIcon.rel = 'apple-touch-icon';
+                appleTouchIcon.href = '/images/orkinosai-logo.png';
+                document.head.appendChild(appleTouchIcon);
+            }
+        </script>
+        
         <!-- Hero Section -->
         <Pane Name="Hero" />
         

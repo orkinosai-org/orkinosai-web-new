@@ -71,7 +71,7 @@ body {
 }
 
 .navbar-toggler {
-    order: 3;
+    order: 2;
     border: none;
     color: white;
 }
@@ -90,6 +90,7 @@ body {
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    order: 3;
 }
 
 /* Oqtane Menu Integration */
@@ -101,20 +102,11 @@ body {
 
 .app-menu .navbar-nav {
     margin: 0 auto;
+    display: flex !important;
 }
 
 .app-menu .navbar-nav .nav-item {
     margin: 0 0.5rem;
-}
-
-/* Hide the Menu component's own toggler since we handle it at theme level */
-.app-menu .app-menu-toggler {
-    display: none !important;
-}
-
-/* Ensure Menu component's collapse behavior works within our structure */
-.app-menu .navbar-collapse {
-    display: block !important;
 }
 
 /* Navigation Links Styling */
@@ -152,16 +144,13 @@ body {
 }
 
 /* Mobile Menu Toggler */
-.app-menu-toggler {
-    order: 2;
-}
-
-.app-menu-toggler .navbar-toggler {
+.navbar-toggler {
+    order: 3;
     border: none;
     color: white;
 }
 
-.app-menu-toggler .navbar-toggler:focus {
+.navbar-toggler:focus {
     box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
 }
 

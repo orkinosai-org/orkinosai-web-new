@@ -3,13 +3,13 @@
 
 @if (MenuPages.Any())
 {
-    <span class="app-menu-toggler">
+    <span class="app-menu-toggler d-md-none">
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#Menu" aria-controls="Menu" aria-expanded="false" aria-label="Toggle Navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </span>
     <div class="app-menu">
-        <div class="collapse navbar-collapse" id="Menu">
+        <div class="collapse navbar-collapse d-md-block" id="Menu">
             <MenuItemsVertical ParentPage="null" Pages="MenuPages" />
         </div>
     </div>

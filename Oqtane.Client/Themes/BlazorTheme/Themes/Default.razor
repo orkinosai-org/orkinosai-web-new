@@ -1,34 +1,56 @@
 @namespace Oqtane.Themes.BlazorTheme
 @inherits ThemeBase
 
-<div class="row flex-xl-nowrap gx-0">
-    <div class="sidebar">
-        <nav class="navbar">
+<!-- Desktop Navigation -->
+<div class="d-none d-md-block">
+    <nav class="navbar navbar-expand-md navbar-dark top-navbar">
+        <div class="container-fluid">
             <Logo UseSiteNameAsFallback="true" />
-            <Menu Orientation="Vertical" />
-        </nav>
-    </div>
-
-    <div class="main g-0">
-        <div class="top-row px-4">
-            <div class="ms-auto">
+            <Menu Orientation="Horizontal" />
+            <div class="ms-auto d-flex align-items-center">
                 <Search CssClass="me-3 text-center d-inline-block" />
                 <UserProfile />
                 <Login />
                 <ControlPanel LanguageDropdownAlignment="right" />
             </div>
-            <div class="breadcrumbs">
-                <Breadcrumbs />
-            </div>
         </div>
-        <div class="container">
-            <div class="row px-4">
-                <Pane Name="@PaneNames.Admin" />
-                <CookieConsent />
+    </nav>
+    <div class="breadcrumbs-desktop">
+        <Breadcrumbs />
+    </div>
+</div>
+
+<!-- Mobile Navigation -->
+<div class="d-md-none">
+    <div class="mobile-top-row">
+        <div class="d-flex align-items-center justify-content-between px-3">
+            <Logo UseSiteNameAsFallback="true" />
+            <div class="d-flex align-items-center">
+                <Search CssClass="me-2" />
+                <UserProfile />
+                <Login />
+                <ControlPanel />
             </div>
         </div>
     </div>
-    
+    <nav class="navbar navbar-dark mobile-navbar">
+        <div class="container-fluid">
+            <Menu Orientation="Vertical" />
+        </div>
+    </nav>
+    <div class="breadcrumbs-mobile">
+        <Breadcrumbs />
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <div class="container">
+        <div class="row px-4">
+            <Pane Name="@PaneNames.Admin" />
+            <CookieConsent />
+        </div>
+    </div>
 </div>
 
 @code {

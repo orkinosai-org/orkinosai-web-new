@@ -70,15 +70,6 @@ body {
     order: 1;
 }
 
-.navbar-toggler {
-    order: 2;
-    border: none;
-    color: white;
-}
-
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
-}
 
 .navbar-collapse {
     order: 4;
@@ -90,7 +81,6 @@ body {
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    order: 3;
 }
 
 /* Oqtane Menu Integration */
@@ -101,12 +91,21 @@ body {
 }
 
 .app-menu .navbar-nav {
-    margin: 0;
-    display: flex !important;
+    margin: 0 auto;
 }
 
 .app-menu .navbar-nav .nav-item {
-    margin: 0 0.25rem;
+    margin: 0 0.5rem;
+}
+
+/* Hide the Menu component's own toggler since we handle it at theme level */
+.app-menu .app-menu-toggler {
+    display: none !important;
+}
+
+/* Ensure Menu component's collapse behavior works within our structure */
+.app-menu .navbar-collapse {
+    display: block !important;
 }
 
 /* Navigation Links Styling */
@@ -114,7 +113,7 @@ body {
     font-weight: 500;
     transition: color 0.3s ease;
     position: relative;
-    padding: 0.75rem 0.75rem;
+    padding: 0.75rem 1rem;
     color: rgba(255, 255, 255, 0.9) !important;
 }
 
@@ -144,13 +143,16 @@ body {
 }
 
 /* Mobile Menu Toggler */
-.navbar-toggler {
-    order: 3;
+.app-menu-toggler {
+    order: 2;
+}
+
+.app-menu-toggler .navbar-toggler {
     border: none;
     color: white;
 }
 
-.navbar-toggler:focus {
+.app-menu-toggler .navbar-toggler:focus {
     box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
 }
 
@@ -188,16 +190,16 @@ body {
         flex: 1;
         display: flex;
         justify-content: center;
-        max-width: calc(100% - 200px); /* Reserve space for brand and control panel */
+        max-width: calc(100% - 300px); /* Reserve space for brand and control panel */
     }
     
     .app-menu .navbar-nav {
-        margin: 0;
+        margin: 0 auto;
         flex-direction: row;
     }
     
     .app-menu .navbar-nav .nav-item {
-        margin: 0 0.25rem;
+        margin: 0 0.5rem;
     }
     
     /* Ensure control panel stays on the right */
@@ -214,7 +216,7 @@ body {
 /* Tablet and Mobile Layout */
 @media (max-width: 991.98px) {
     .navbar-collapse {
-        margin-top: 0.5rem;
+        margin-top: 1rem;
     }
     
     .app-menu {
@@ -224,7 +226,7 @@ body {
     
     .app-menu .navbar-nav {
         text-align: center;
-        padding-top: 0.5rem;
+        padding-top: 1rem;
         flex-direction: column;
     }
     
@@ -236,7 +238,7 @@ body {
     /* Stack control panel items */
     .navbar-nav.ms-auto {
         margin-left: 0 !important;
-        margin-top: 0.5rem;
+        margin-top: 1rem;
         flex-direction: column;
         align-items: center;
         order: 2;

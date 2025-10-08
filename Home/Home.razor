@@ -1,0 +1,54 @@
+@page "/"
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Routing
+
+<div class="homepage-container">
+    <header class="header">
+        <img src="/images/orkinosai-logo.png" alt="OrkinosAI Logo" class="logo" />
+        <img src="/images/ms-startups-banner.png" alt="Microsoft for Startups Banner" class="banner" />
+    </header>
+    
+    <main class="content">
+        <h1>Welcome to OrkinosAI</h1>
+        <p>Your gateway to innovative AI solutions.</p>
+        <!-- Additional content (business plan, investor info, team, etc.) can be added here -->
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2025 OrkinosAI. All rights reserved.</p>
+    </footer>
+</div>
+
+<style>
+    .homepage-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .logo {
+        width: 200px;
+    }
+    .banner {
+        width: 100%;
+        max-width: 600px;
+        margin-top: 10px;
+    }
+    .content {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .footer {
+        margin-top: auto;
+        text-align: center;
+        padding: 10px;
+        background-color: #eaeaea;
+        width: 100%;
+    }
+</style>

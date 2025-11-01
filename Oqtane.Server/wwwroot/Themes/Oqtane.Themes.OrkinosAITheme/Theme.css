@@ -32,11 +32,10 @@ body {
 
 /* Typography Enhancements */
 .gradient-text {
-    background: var(--orkinosai-gradient);
-    -webkit-background-clip: text;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    /*-webkit-background-clip: text;*/
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 700;
+    color: transparent; /* fallback */
 }
 
 .lead {
@@ -640,4 +639,41 @@ footer a:hover {
     height: 200px;
     object-fit: cover;
     border-radius: 50%; /* remove if you want a square */
+}
+
+/* Logo styling */
+.site-logo {
+    height: 60px;
+    width: auto;
+    margin: 10px;
+}
+
+/* Banner styling */
+.site-banner {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* Inject logo into header */
+header::before {
+    display: block;
+    height: 80px;
+    margin-bottom: 10px;
+    background-image: url('images/orkinosai-logo-new.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+}
+
+/* Inject banner below header */
+header::after {
+    display: block;
+    height: 200px;
+    margin-bottom: 20px;
+    background-image: url('images/orkinosai-banner.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }

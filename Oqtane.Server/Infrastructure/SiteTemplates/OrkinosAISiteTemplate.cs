@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using Oqtane.Models;
 using Oqtane.Infrastructure;
@@ -8,11 +9,11 @@ namespace Oqtane.SiteTemplates
     {
         public string Name => "OrkinosAI Site Template";
 
-        // Required by ISiteTemplate
         public List<PageTemplate> CreateSite(Site site)
         {
             return new List<PageTemplate>
             {
+                CreateHtmlPage("Home", GetHomeHtml()),
                 CreateHtmlPage("Founder", GetFounderHtml()),
                 CreateHtmlPage("Contact", GetContactHtml()),
                 CreateHtmlPage("About", GetAboutHtml()),
@@ -20,8 +21,6 @@ namespace Oqtane.SiteTemplates
                 CreateHtmlPage("Terms and Conditions", GetTermsHtml()),
             };
         }
-
-        // ---------- helper methods BELOW THIS LINE (class-level, NOT nested) ----------
 
         private PageTemplate CreateHtmlPage(string title, string html)
         {
@@ -37,13 +36,17 @@ namespace Oqtane.SiteTemplates
                     {
                         ModuleDefinitionName = "Oqtane.Modules.HtmlText",
                         Title = title,
-                        Pane = "Default", // change if your theme uses another pane name
+                        Pane = "Default",
                         Order = 0,
                         Content = html
                     }
                 }
             };
         }
+
+        private string GetHomeHtml() => @"
+<div class=""text-center mb-4""><img class=""founder-photo"" src=""/images/logo.png"" alt=""logo""><h2>Supported by Microsoft for Startups</h2><img src=""/images/ms-startups-banner.png"" alt=""Microsoft startup support""></div><div class=""hero-section""><div class=""container""><div class=""hero-content""><h1 class=""display-3 mb-4 fade-in""><strong>Revolutionizing AI Solutions</strong></h1><p class=""lead mb-5 fade-in"">OrkinosAI delivers cutting-edge artificial intelligence solutions that transform businesses and drive innovation. Experience the future of AI technology today.</p>
+<div class=""fade-in"">/aboutLearn More</a>/contactGet Started</a></div></div></div></div>";
 
         private string GetFounderHtml() => @"
 <div class='section-padding'>

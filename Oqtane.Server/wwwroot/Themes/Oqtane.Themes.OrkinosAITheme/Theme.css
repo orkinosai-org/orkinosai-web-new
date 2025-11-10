@@ -677,3 +677,12 @@ header::after {
     background-position: center center;
     background-size: cover;
 }
+.solutions-section {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+.gradient-text {
+    background: none !important;
+    display: inline-block !important;
+    padding: 0 !important;
+}

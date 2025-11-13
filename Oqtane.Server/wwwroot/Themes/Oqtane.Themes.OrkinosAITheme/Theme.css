@@ -686,3 +686,164 @@ header::after {
     display: inline-block !important;
     padding: 0 !important;
 }
+.hero-section {
+    background: linear-gradient(135deg, #3b82f6, #9333ea);
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+    .hero-section .display-3 {
+        font-weight: 700;
+        animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .hero-section .lead {
+        font-size: 1.25rem;
+        margin-bottom: 30px;
+    }
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.2s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.btn-primary {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background-color: #2563eb;
+        border-color: #2563eb;
+    }
+
+.btn-outline-light {
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+    .btn-outline-light:hover {
+        background-color: #fff;
+        color: #3b82f6;
+    }
+.founder-photo {
+    max-width: 180px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.gradient-bg {
+    background: linear-gradient(135deg, #3b82f6, #9333ea);
+    color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+}
+/* ===== Spacing fixes for section headers and first content block ===== */
+
+/* 1) Reduce vertical padding on generic sections */
+.section-padding {
+    padding-top: 1.5rem; /* was likely ~4–5rem */
+    padding-bottom: 2.5rem;
+}
+
+@media (min-width: 992px) {
+    .section-padding {
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+    }
+}
+
+/* 2) Kill the extra top margin on the first element in a section.
+   This prevents large gaps under the gradient band when the first
+   child is a heading or hero block. */
+.section-padding > .container > *:first-child,
+.section-padding > .container-fluid > *:first-child,
+.hero-section > .container > *:first-child,
+.hero-section > .container-fluid > *:first-child {
+    margin-top: 0;
+}
+
+/* 3) Headings: tighten default top margins so stacked sections don't add up */
+.section-padding h1,
+.section-padding h2,
+.section-padding h3 {
+    margin-top: 0.25rem;
+}
+
+/* 4) If your “Our Solutions” band is a dedicated block (optional tighten) */
+.solutions-section,
+.our-solutions {
+    padding-top: 1rem;
+}
+
+/* 5) Oqtane/Bootstrap module chrome sometimes adds padding/margins.
+   This trims the very first HtmlText module on a page/pane so it
+   doesn't introduce extra vertical space under the header. */
+.oqtane-page .pane .module:first-child,
+.oqtane-page .pane .module:first-child .module-body {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* 6) Container top padding just below the top nav (keep modest breathing room) */
+.main .container,
+.oqtane-page .container {
+    padding-top: 1rem;
+}
+
+/* 7) Make CTA button rows sit closer to the paragraph above (common on the Home hero) */
+.hero-section .fade-in,
+.section-padding .btn + .btn {
+    margin-top: 0.75rem;
+}
+
+/* 8) If the light panel in your screenshot is a special “card strip”, soften its padding */
+.panel-soft,
+.card-strip {
+    padding-top: 1.25rem;
+    padding-bottom: 1.75rem;
+}
+/* Fade in once and keep the final state visible */
+.fade-in {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeInUp 800ms ease-out forwards; /* forwards = hold the last keyframe */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Respect users that prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+}

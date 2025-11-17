@@ -34,5 +34,12 @@ Oqtane.Server/wwwroot/Modules/Templates/*
 Oqtane.Server/wwwroot/Themes/*
 !Oqtane.Server/wwwroot/Themes/Oqtane.Themes.*
 !Oqtane.Server/wwwroot/Themes/Templates
+!Oqtane.Server/wwwroot/Themes/Custom
 Oqtane.Server/wwwroot/Themes/Templates/*
 Oqtane.Server/wwwroot/Themes/Templates/External
+
+# Migration tools temporary files
+migration-tools/migration-log.txt
+migration-tools/migration-report.txt
+migration-tools/*.tmp
+migration-tools/*.backup
